@@ -1,0 +1,45 @@
+.cuadro_rojo_crud {
+    font-style: italic;
+    background-color: rgb(218, 82, 82);
+    padding: 10px;
+    border: solid black;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+}
+
+.button_crud {
+    background-color: #Eb7575;  /* Fondo rosa */
+    color: #FFFFFF;  /* Texto blanco */
+    padding: 10px 20px;  /* Padding (espaciado interno) para ajustar el tamaño */
+    font-size: 16px;  /* Tamaño de fuente */
+    font-family: 'Arial', sans-serif;  /* Estilo de fuente */
+    border: none;  /* Sin borde */
+    border-radius: 5px;  /* Bordes redondeados */
+    cursor: pointer;  /* Cambia el cursor al pasar sobre el botón */
+    margin: 10px 40px;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.button_crud:hover {
+    background-color: #cb4c46;  /* Cambia el color al pasar el mouse */
+    animation: 1000s infinite botonAnimado;
+}
+
+@keyframes botonAnimado {
+    0% {
+        transform: scale(1.1, 1.1);
+    }
+
+    50% {
+        scale: (1, 1);
+    }
+
+    100% {
+        transform: scaleX(3, 3);
+    }
+
+}
+
