@@ -1,0 +1,108 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tienda</title>
+    <link rel="shortcut icon" href="img/libro.png" type="image/libro.png">
+    <link rel="stylesheet" href="gracias.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&family=Tulpen+One&family=Ubuntu:ital,wght@0,300;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+</head>
+
+<header class="encabezado item">
+
+    <div class="enc-1">
+        <img id="logo" src="img/libro.png" alt="logo">
+    </div>
+
+    <div class="enc-2">
+        <h1 id="inicio">La Tienda</h1>
+        <h3>Tienda online de mangas, cómics, libros y merchandising</h3>
+        <h5>150 años de trayectoria, trayendote todo lo que más te gusta</h5>
+    </div>
+
+    <div class="enc-1">
+        <img id="logo" src="img/libro.png" alt="logo">
+    </div>
+
+</header>
+
+<body>
+    <p align=center>&nbsp;</p>
+    <h1 align=center>
+        <font size="+1" style="color: black;">Muchas gracias por visitarnos. Tu consulta será atendida lo más pronto
+            posible y, de ser
+            necesario nos contactaremos con usted por medio del e-mail que nos ha brindado. Los saluda atentamente: La
+            Tienda</font>
+    </h1>
+
+    <table border="1" align=center width="226">
+        <tr>
+            <th align="right">Campo</th>
+            <th align="left">Valor</th>
+        </tr>
+
+        <script language="javascript">
+            var args = location.search.substr(1).split('&');
+            for (var i = 0; i < args.length; ++i) {
+                var parts = args[i].split('=');
+                if (parts != null) {
+                    var field = parts[0];
+                    var value = parts[1];
+                    if (value == null) {
+                        value = "null"
+                    }
+                    else {
+                        value = '"' + unescape(value.replace(/\+/g, ' ')) + '"';
+                    }
+
+                    document.writeln('<tr><td align="right">' + field + '</td>');
+                    document.writeln('<td align="left">' + value + '</td></tr>');
+                }
+            }
+        </script>
+
+        <body onLoad="redireccionar()">
+
+            <script language="JavaScript">
+                function redireccionar() {
+                    setTimeout("location.href='index.html'", 10000);
+                }
+            </script>
+
+
+            <noscript>
+                <tr>
+                    <td>
+                        <p>You need to turn on Javascript in your browser.</p>
+
+                        <p>In Microsoft Internet Explorer 4 or greater:</p>
+                        <ul>
+                            <li>From the "Tools" menu (in IE 4, it's the "View" menu), select "Internet Options".</li>
+                            <li>Click on the "Security" tab.</li>
+                            <li>Click on the "Custom Level" button. (In IE 4, select "Custom"
+                                and then click on "Settings...".)</li>
+                            <li>Under "Active scripting" make sure "Enable" is selected.</li>
+                        </ul>
+
+                        <p>In Netscape version 4 or greater:</p>
+                        <ul>
+                            <li>From the <b>Edit</b> menu, select <b>Preferences</b>.</li>
+                            <li>In the <b>Category</b> list on the left, click on the word "Advanced".</li>
+                            <li>In the panel on the right, make sure "Enable JavaScript" is checked.</li>
+                            <li>Click the <b>OK</b> button.</li>
+                        </ul>
+
+                    </td>
+                </tr>
+            </noscript>
+
+    </table>
+</body>
+
+</html>

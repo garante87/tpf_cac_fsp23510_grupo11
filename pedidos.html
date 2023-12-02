@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <link rel="shortcut icon" href="img/libro.png" type="image/libro.png">
+    <link rel="stylesheet" href="pedidos_estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&family=Tulpen+One&family=Ubuntu:ital,wght@0,300;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="encabezado item">
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+
+        <div class="enc-2">
+            <h1 id="inicio">La Tienda</h1>
+            <h3>Tienda online de mangas, cómics, libros y merchandising</h3>
+            <h5>150 años de trayectoria, trayendote todo lo que más te gusta</h5>
+        </div>
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+
+    </header>
+
+    <nav>
+        <ul type="none">
+            <li><a href="index.html">inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="consultas.html">Consultas</a></li>
+            <li><a href="pedidos.html">Pedidos</a></li>
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+        </ul>
+        <a style="color: white;" href="#final"><b>Ir al final</b></a>
+    </nav>
+
+    <center>
+        <h1 id="Titulo_Form">Formulario de Pedido</h1>
+        <form action="submit_order.html" target="_blank">
+
+            <label for="name">Nombre:</label><br>
+            <input type="text" id="name" class="name1" name="name" placeholder="Juan Caballo Gutierrez"><br>
+            <br>
+
+            <label for="address">Dirección de envío:</label><br>
+            <input type="text" id="address" class="address1" name="address"
+                placeholder="País-Ciudad-Código Postal-Calle-Número"><br>
+            <br>
+
+            <label for="order">Detalles del Pedido:</label><br>
+            <textarea id="order" name="order"></textarea><br>
+
+            <h1 id="titulo_met">Método de pago</h1>
+            <div class="payment-method">
+                <label>
+                    <input type="radio" name="metodo_pago" value="DebitoTarjeta">
+                    Débito o Tarjeta
+                </label><br>
+                <label>
+                    <input type="radio" name="metodo_pago" value="Contrareembolso">
+                    Contrareembolso
+                </label><br>
+                <label>
+                    <input type="radio" name="metodo_pago" value="TransferenciaBancaria">
+                    Transferencia Bancaria
+                </label><br>
+            </div>
+            <div><input type="submit" value="Enviar Pedido"></div>
+        </form>
+    </center>
+
+    <footer id="final" class="item pie">
+        <a style="color: white;" href="#inicio"><b>Ir al inicio </b>
+        </a>
+        <div>
+            <p>&copy; Todos los derechos reservados</p>
+        </div>
+        <div class="iconos">
+            <a href="https://www.facebook.com/leomessi"><i class="fab fa-facebook" title="Facebook"></i></a>
+            <a href="https://www.instagram.com/leomessi/"><i class="fab fa-instagram" title="instagram"></i></a>
+            <a href="https://twitter.com/leomessisite?lang=es"><i class="fab fa-twitter" title="Twitter"></i></a>
+            <a href="mailto:messi@gmail.com"><i class="fas fa-envelope" title="Correo Electronico"></i></a>
+        </div>
+    </footer>
+</body>
+
+</html>

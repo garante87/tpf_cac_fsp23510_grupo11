@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas</title>
+    <link rel="stylesheet" href="consultas_estilos.css">
+    <link rel="shortcut icon" href="img/libro.png" type="image/libro.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&family=Tulpen+One&family=Ubuntu:ital,wght@0,300;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+</head>
+<form action=""></form>
+
+<body>
+    <header class="encabezado item">
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+
+        <div class="enc-2">
+            <h1 id="inicio">La Tienda</h1>
+            <h3>Tienda online de mangas, cómics, libros y merchandising</h3>
+            <h5>150 años de trayectoria, trayendote todo lo que más te gusta</h5>
+        </div>
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+    </header>
+
+    <nav>
+        <ul type="none">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="consultas.html">Consultas</a></li>
+            <li><a href="pedidos.html">Pedidos</a></li>
+            <li><a href="quienes_somos.html">Quiénes somos</a></li>
+        </ul>
+        <a style="color: white;" href="#final"><b>Ir al final</b></a>
+    </nav>
+
+    <p style="color: black;">Para consultas completar el siguiente formulario:</p>
+    <form action="gracias.html" target="_blank">
+        <fieldset>
+
+            <label for="nombre">Nombre: </label>
+            <input size="30" type="text" name="nombre" placeholder="Ingrese su nombre aqui">
+            <br><br>
+
+            <label for="apellido">Apellido: </label>
+            <input size="30" type="text" name="apellido" placeholder="Ingrese su apellido aqui">
+            <br><br>
+
+            <label for="email">e-mail: </label>
+            <input type="email" name="email" placeholder="Ingrese su e-mail aquí">
+            <br><br>
+
+            <label for="consulta">Ingrese a continuación su consulta en menos de 300
+                caracteres:</label>
+            <br>
+            <textarea name="consulta" id="consulta" placeholder="Dejanos acá tu consulta en menos de 300 caracteres"
+                cols="100" rows="10" maxlength="300"></textarea>
+
+        </fieldset>
+
+        <br><br>
+        <input type="reset" value="Borrar formulario">
+        <input type="submit" value="Enviar datos">
+
+
+    </form>
+
+    <footer id="final" class="item pie">
+        <a style="color: white;" href="#inicio"><b>Ir al inicio </b>
+        </a>
+        <div>
+            <p>&copy; Todos los derechos reservados</p>
+        </div>
+        <div class="iconos">
+            <a href="https://www.facebook.com/leomessi" target="_blank"><i class="fab fa-facebook"
+                    title="Facebook"></i></a>
+            <a href="https://www.instagram.com/leomessi/" target="_blank"><i class="fab fa-instagram"
+                    title="instagram"></i></a>
+            <a href="https://twitter.com/leomessisite?lang=es" target="_blank"><i class="fab fa-twitter"
+                    title="Twitter"></i></a>
+            <a href="mailto:messi@gmail.com" target="_blank"><i class="fas fa-envelope"
+                    title="Correo Electronico"></i></a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
