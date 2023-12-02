@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tienda</title>
+    <link rel="shortcut icon" href="img/libro.png" type="image/libro.png">
+    <link rel="stylesheet" href="quienes_somos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&family=Tulpen+One&family=Ubuntu:ital,wght@0,300;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+</head>
+
+<body>
+    <header class="encabezado item">
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+
+        <div class="enc-2">
+            <h1 id="inicio">La Tienda</h1>
+            <h3>Tienda online de mangas, cómics, libros y merchandising</h3>
+            <h5>150 años de trayectoria, trayendote todo lo que más te gusta</h5>
+        </div>
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+
+    </header>
+    <nav>
+        <ul type="none">
+            <li><a href="index.html">Volver al área pública</a></li>
+            <li><a href="crud.html">Atrás</a></li>
+        </ul>
+    </nav>
+
+        <div class="cuadro_rojo">
+            <p><b>CRUD</b></p>
+            <br>
+            <p>Modificar datos de manga.</p>
+        </div>
+        <div class="cuadro_rojo">
+            <form>
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id"><br><br>
+
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo"><br><br>
+            
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" name="autor"><br><br>
+            
+                <label for="editorial">Editorial:</label>
+                <input type="text" id="editorial" name="editorial"><br><br>
+            
+                <label for="genero">Género:</label>
+                <input type="text" id="genero" name="genero"><br><br>
+            
+                <label for="cantidad_paginas">Cantidad de Páginas:</label>
+                <input type="number" id="cantidad_paginas" name="cantidad_paginas"><br><br>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" min="0.01" placeholder="0.00"><br><br>
+            
+                <label for="imagen_portada">Imagen de Portada:</label>
+                <input type="file" id="imagen_portada" name="imagen_portada"><br><br>
+            
+                <label for="descripcion">Descripción:</label><br>
+                <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br><br>
+            
+                <input type="submit" value="Guardar">
+              </form>
+        </div>
+
+        
+    </body>
+    <br><!--Separador de footer-->
+    <footer id="final" class="item pie">
+        <div>
+            <p>&copy; Todos los derechos reservados</p>
+        </div>
+        <div class="iconos">
+            <a href="https://www.facebook.com/leomessi"><i class="fab fa-facebook" title="Facebook"></i></a>
+            <a href="https://www.instagram.com/leomessi/"><i class="fab fa-instagram" title="instagram"></i></a>
+            <a href="https://twitter.com/leomessisite?lang=es"><i class="fab fa-twitter" title="Twitter"></i></a>
+            <a href="mailto:messi@gmail.com"><i class="fas fa-envelope" title="Correo Electronico"></i></a>
+        </div>
+    </footer>
+</html>

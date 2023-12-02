@@ -39,7 +39,7 @@ a {
     color: white;
 }
 
-p {
+p, form label {
     font-style: normal;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;

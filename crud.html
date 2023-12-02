@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Tienda</title>
+    <link rel="shortcut icon" href="img/libro.png" type="image/libro.png">
+    <link rel="stylesheet" href="quienes_somos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&family=Tulpen+One&family=Ubuntu:ital,wght@0,300;1,500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+    <script>
+        function agregarLibro() {
+          window.location.href = "crud_alta.html";
+        }
+        function modificarLibro() {
+          window.location.href = "crud_modificar.html";
+        }
+        function eliminarLibro() {
+          window.location.href = "crud_baja.html";
+        }
+        function listarCatalogo() {
+          window.location.href = "crud_lista.html";
+        }
+    </script>
+</head>
+
+<body>
+    <header class="encabezado item">
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+
+        <div class="enc-2">
+            <h1 id="inicio">La Tienda</h1>
+            <h3>Tienda online de mangas, cómics, libros y merchandising</h3>
+            <h5>150 años de trayectoria, trayendote todo lo que más te gusta</h5>
+        </div>
+
+        <div class="enc-1">
+            <img id="logo" src="img/libro.png" alt="logo">
+        </div>
+
+    </header>
+    <nav>
+        <ul type="none">
+            <li><a href="index.html">Volver al área pública</a></li>
+        </ul>
+    </nav>
+
+        <div class="cuadro_rojo">
+            <p><b>CRUD</b></p>
+            <br>
+            <p>ABM de catálogo.</p>
+        </div>
+        <div class="cuadro_rojo">
+            <button onclick="agregarLibro()">Agregar Libro</button>
+            <button onclick="modificarLibro()">Modificar Libro</button>
+            <button onclick="eliminarLibro()">Eliminar Libro</button>
+            <button onclick="listarCatalogo()">Listar Catálogo</button>
+        </div>
+
+        
+    </body>
+    <br><!--Separador de footer-->
+    <footer id="final" class="item pie">
+        <div>
+            <p>&copy; Todos los derechos reservados</p>
+        </div>
+        <div class="iconos">
+            <a href="https://www.facebook.com/leomessi"><i class="fab fa-facebook" title="Facebook"></i></a>
+            <a href="https://www.instagram.com/leomessi/"><i class="fab fa-instagram" title="instagram"></i></a>
+            <a href="https://twitter.com/leomessisite?lang=es"><i class="fab fa-twitter" title="Twitter"></i></a>
+            <a href="mailto:messi@gmail.com"><i class="fas fa-envelope" title="Correo Electronico"></i></a>
+        </div>
+    </footer>
+</html>
