@@ -13,14 +13,24 @@ function validateInputs() {
     if ($order.value === "") {
         alert("Por favor ingresa una orden");
     }
+}
 
-    ValidaCheck: function(vname) {
-        if ($("[name='" + vname + "']:checked").val() != undefined) {
-            alert('seleccionado:' + $("[name='status']:checked").val());
-        } else {
-            alert('sin seleccionar');
-        }
+function validar() {
+    const todo_correcto = true;
+    if (!todo_correcto) {
+        alert('Algunos campos no están correctos, vuelva a revisarlos');
     }
+    return todo_correcto;
+}
+
+
+document.addEventListener("click", (e) => {
+    if (e.target === $submit) {
+        e.preventDefault();
+        validateInputs();
+        validar();
+    }
+})
 
     validaCheck('status');
 
