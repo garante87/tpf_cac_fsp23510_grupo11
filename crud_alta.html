@@ -92,9 +92,9 @@
 
             // Genera numeros aleatorios
             function generarValores() {
-                document.getElementById("id").value = Math.floor(Math.random() * 1000) + 1;
-                document.getElementById("cantidad_paginas").value = Math.floor(Math.random() * 500) + 150;
-                document.getElementById("precio").value = Math.floor(Math.random() * 10000) + 1500;
+                document.getElementById("id").value = Math.floor(Math.random() * 1000) + 1; //id
+                document.getElementById("cantidad_paginas").value = Math.floor(Math.random() * 500) + 150; //paginas
+                document.getElementById("precio").value = Math.floor(Math.random() * 10000) + 1500; //precio
             }
 
             // Carga la imagen si cambio el input
@@ -108,8 +108,7 @@
             URL_Backend = "http://127.0.0.1:5000";
             document.getElementById('formularioLibro').addEventListener('submit', function(event) {
                 event.preventDefault();
-                // Crea un objeto FormData con los valores del formulario
-                var formData = new FormData();
+                var formData = new FormData(); // Crea un objeto FormData con los valores del formulario
                 // Obtengo los valores de los campos del formulario
                 formData.append('id',          document.getElementById('id').value);
                 formData.append('titulo',      document.getElementById('titulo').value);

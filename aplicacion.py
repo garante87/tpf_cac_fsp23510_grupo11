@@ -153,7 +153,6 @@ PATH_IMAGENES = './imagenes/'
 # agregar ###########################################################
 @app.route("/libros", methods=["POST"])
 def agregar_libro():
-
     id = request.form['id']
     titulo = request.form['titulo']
     autor = request.form['autor']
@@ -188,38 +187,27 @@ def listar_libros():
     return jsonify(libros)
 
 # modificar #########################################################
-@app.route("/libros/<int:id>", methods=["PUT"])
+@app.route("/libros/<int:id>", methods=["POST"])
 def modificar_libro(id):
-    nueva_descripcion = request.form.get("descripcion")
-    nueva_cantidad = request.form.get("cantidad")
-    nuevo_precio = request.form.get("precio")
-    nuevo_proveedor = request.form.get("proveedor")
-    imagen_url = request.files['imagen_url']
-    nombre_imagen = ""
-    nombre_imagen = secure_filename(imagen_url.filename)
-    nombre_base, extension = os.path.splitext(nombre_imagen)
-    nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
-    imagen_url.save(os.path.join(PATH_IMAGENES, nombre_imagen))
-    libro = libro = db.consultar_libro(id)
-    if libro: # Si existe el libro...
-        imagen_vieja = libro["imagen_url"]
-        ruta_imagen = os.path.join(PATH_IMAGENES, imagen_vieja)
-        if os.path.exists(ruta_imagen):
-            os.remove(ruta_imagen)
-    if db.modificar_libro(id, nueva_descripcion, nueva_cantidad, nuevo_precio, nombre_imagen, nuevo_proveedor):
+        
+    titulo = request.form.get('titulo')
+    autor = request.form.get('autor')
+    editorial = request.form.get('editorial')
+    genero = request.form.get('genero')
+    paginas = request.form.get('paginas')
+    imagen_url = request.form.get('imagen_url')
+    precio = request.form.get('precio')
+    descripcion = request.form.get('descripcion')
+    
+    if db.modificar_libro(id, titulo, autor, editorial, genero, paginas, imagen_url, precio, descripcion):
         return jsonify({"Aviso": "Libro modificado"}), 200
     else:
         return jsonify({"Aviso": "Libro no encontrado"}), 403
 
 # eliminar ##########################################################
-@app.route("/libros/<int:id>", methods=["DELETE"])
+@app.route("/libros/borrar/<int:id>", methods=["POST"])
 def eliminar_libro(id):
     libro = libro = db.consultar_libro(id)
-    if libro:
-        imagen_vieja = libro["imagen_url"]
-        ruta_imagen = os.path.join(PATH_IMAGENES, imagen_vieja)
-        if os.path.exists(ruta_imagen):
-            os.remove(ruta_imagen)
     if db.eliminar_libro(id):
         return jsonify({"Aviso": "Libro eliminado"}), 200
     else:

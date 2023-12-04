@@ -6,12 +6,21 @@
     <title>La Tienda</title>
     <link rel="shortcut icon" href="img/libro.png" type="image/libro.png">
     <link rel="stylesheet" href="quienes_somos.css">
+    <link rel="stylesheet" href="crud.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,200&family=Tulpen+One&family=Ubuntu:ital,wght@0,300;1,500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+    <style>
+        /* Estilo para ocultar el formulario inicialmente */
+        #formularioLibro {
+            display: none;
+        }
+        </style>
+
 </head>
 
 <body>
@@ -39,45 +48,197 @@
         </ul>
     </nav>
 
-        <div class="cuadro_rojo">
-            <p><b>CRUD</b></p>
+    <div class="cuadro_rojo">
+        <p><b>CRUD</b></p>
+        <br>
+        <p>ABM de catálogo.</p>
+    </div>
+    
+    <div class="cuadro_rojo_crud">
+
+        <form id="formularioLibro">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id"><br><br>
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" value="Ingrese título"><br><br>
+            <label for="autor">Autor:</label>
+            <input type="text" id="autor" name="autor" value="Ingrese autor"><br><br>
+            <label for="editorial">Editorial:</label>
+            <input type="text" id="editorial" name="editorial" value="Ivrea"><br><br>
+            <label for="genero">Género:</label>
+            <input type="text" id="genero" name="genero" value="Seinen"><br><br>
+            <label for="cantidad_paginas">Cantidad de Páginas:</label>
+            <input type="number" id="cantidad_paginas" name="cantidad_paginas"><br><br>
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" step="0.01" min="0.01" placeholder="0.00"><br><br>
+            <label for="descripcion">Descripción:</label><br>
+            <textarea
+                id="descripcion" name="descripcion" rows="4" cols="50"
+                >Cuenta la historia que sigue al enfrentamiento contra Majin Boo. Goku y sus amigos deben enfrentarse a nuevas múltiples desafíos.
+            </textarea>
+            <br><br>
+            <label for="imagen_portada">Imagen de Portada:</label><br>
+            <input type="text" id="imagen_portada" name="imagen_portada" value="https://www.ivrea.com.ar/dragonballsuper/dragonballsuper01.jpg" style="width: 500px;"><br>
+            <img id="imagen_visualizada" src="https://www.ivrea.com.ar/dragonballsuper/dragonballsuper01.jpg" width="250"><br>
+            <p>Acceso directo a las portadas</p>
+            <a href="https://www.ivrea.com.ar/catalogo.htm" target=”_blank”><img src="https://www.ivrea.com.ar/img/header.png" width="100"></a><br>
+            <a href="https://tiendapanini.com.ar/planet-manga" target=”_blank”><img src="https://tiendapanini.com.ar/media/logo/stores/8/panini-logo_2_2_1.png" width="100"></a><br>
+            <a href="https://www.ovnipress.net/manga/" target=”_blank”><img src="https://acdn.mitiendanube.com/stores/001/184/069/themes/amazonas/1-slide-1699038316422-7341321130-b3045aa647e1c81bd72abeed59791f051699038323-480-0.png?534048978" width="100"></a><br>
             <br>
-            <p>Modificar datos de manga.</p>
-        </div>
-        <div class="cuadro_rojo">
-            <form>
-                <label for="id">ID:</label>
-                <input type="text" id="id" name="id"><br><br>
+            <br>
+            <input type="submit" value="Guardar" id="botonGuardar">
+            <br>
+        </form>
 
-                <label for="titulo">Título:</label>
-                <input type="text" id="titulo" name="titulo"><br><br>
-            
-                <label for="autor">Autor:</label>
-                <input type="text" id="autor" name="autor"><br><br>
-            
-                <label for="editorial">Editorial:</label>
-                <input type="text" id="editorial" name="editorial"><br><br>
-            
-                <label for="genero">Género:</label>
-                <input type="text" id="genero" name="genero"><br><br>
-            
-                <label for="cantidad_paginas">Cantidad de Páginas:</label>
-                <input type="number" id="cantidad_paginas" name="cantidad_paginas"><br><br>
+        <table border="1">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Portada</th>
+                <th>Editorial</th>
+                <th>Género</th>
+                <th>Descripción</th>
+                <th>Páginas</th>
+                <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody id="datosTabla">
+                <!-- Se llena automáticamente  -->
+            </tbody>
+        </table>
+    </div>
 
-                <label for="precio">Precio:</label>
-                <input type="number" id="precio" name="precio" step="0.01" min="0.01" placeholder="0.00"><br><br>
-            
-                <label for="imagen_portada">Imagen de Portada:</label>
-                <input type="file" id="imagen_portada" name="imagen_portada"><br><br>
-            
-                <label for="descripcion">Descripción:</label><br>
-                <textarea id="descripcion" name="descripcion" rows="4" cols="50"></textarea><br><br>
-            
-                <input type="submit" value="Guardar">
-              </form>
-        </div>
 
-        
+    <script>
+
+        URL_Backend = "http://127.0.0.1:5000";
+
+        // guardar modificaciones
+        document.getElementById('formularioLibro').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(); // Crea un objeto FormData con los valores del formulario
+            // Obtengo los valores de los campos del formulario
+            formData.append('id',          document.getElementById('id').value);
+            formData.append('titulo',      document.getElementById('titulo').value);
+            formData.append('autor',       document.getElementById('autor').value);
+            formData.append('editorial',   document.getElementById('editorial').value);
+            formData.append('genero',      document.getElementById('genero').value);
+            formData.append('paginas',     document.getElementById('cantidad_paginas').value);
+            formData.append('precio',      document.getElementById('precio').value);
+            formData.append('imagen_url',  document.getElementById('imagen_portada').value);
+            formData.append('descripcion', document.getElementById('descripcion').value);
+            // mostrar el contenido de formData en la consola
+            formData.forEach(function(valor, clave){
+                console.log(clave + ': ' + valor);
+            });
+
+
+            // Envía la solicitud POST a la función de Flask
+            fetch(URL_Backend + "/libros/" + document.getElementById('id').value, {
+                method: 'POST',
+                body: formData,
+            })
+            .then(function(response) {
+                    if (response.ok) {
+                        alert('Libro modificado con éxito'); // Mostrar mensaje de éxito
+                        window.history.back(); // Redireccionar a la página anterior
+                        return response.json();
+                    }
+                    throw new Error('Error al modificar el libro');
+                })
+                .then(function(data) {
+                    console.log(data);
+                })
+                .catch(function(error) {
+                    console.error(error); 
+                });
+
+        });
+
+        function obtenerDatos() {
+            const tabla = document.getElementById("datosTabla");
+            fetch(URL_Backend + "/libros")
+            .then(response => {
+                if (!response.ok) {
+                throw new Error('Ocurrió un error al obtener los libros');
+                }
+                return response.json();
+            })
+            .then(data => {
+                data.forEach(libro => {
+                const fila = document.createElement("tr");
+                fila.innerHTML = `
+                    <td>${libro.id}</td>
+                    <td>${libro.titulo}</td>
+                    <td>${libro.autor}</td>
+                    <td><img src="${libro.imagen_url}" alt="Imagen del libro" width="100"></td>
+                    <td>${libro.editorial}</td>
+                    <td>${libro.genero}</td>
+                    <td>${libro.descripcion}</td>
+                    <td>${libro.paginas}</td>
+                    <td>${libro.precio}</td>
+                `;
+                tabla.appendChild(fila);
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Obtener referencias a los elementos HTML
+        const tabla = document.getElementById("datosTabla");
+        const formulario = document.getElementById("formularioLibro");
+
+        // Función para llenar el formulario con los datos de la fila seleccionada
+        function llenarFormulario(event) {
+            const fila = event.target.parentNode;
+            const celdas = fila.getElementsByTagName("td");
+
+            formulario.id.value = celdas[0].textContent;
+            formulario.titulo.value = celdas[1].textContent;
+            formulario.autor.value = celdas[2].textContent;
+            formulario.editorial.value = celdas[4].textContent;
+            formulario.genero.value = celdas[5].textContent;
+            formulario.descripcion.value = celdas[6].textContent;
+            formulario.cantidad_paginas.value = celdas[7].textContent;
+            formulario.precio.value = celdas[8].textContent;
+            
+            // Mostrar la imagen en el formulario
+            const imagenURL = celdas[3].getElementsByTagName("img")[0].src;
+            formulario.imagen_portada.value = imagenURL;
+            document.getElementById("imagen_visualizada").src = imagenURL;
+
+            formulario.style.display = "block"; // Mostrar el formulario
+            formulario.scrollIntoView({ behavior: "smooth", block: "start" }); // Mover el foco al formulario
+        }
+
+        // Asignar evento click a las filas de la tabla
+        tabla.addEventListener("click", function(event) {
+        if (event.target.tagName === "TD") {
+            llenarFormulario(event);
+        }
+        });
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
+        });
+
+        // Carga la imagen si cambio el input
+        const inputImagen = document.getElementById('imagen_portada');
+        const imagenVisualizada = document.getElementById('imagen_visualizada');
+        inputImagen.addEventListener('input', function() {
+            const nuevaURL = inputImagen.value;
+            imagenVisualizada.src = nuevaURL;
+        });
+
+        //cuando se carga la página, llama a la función para llenar la tabla
+        window.onload = obtenerDatos;
+
+    </script>    
+
     </body>
     <br><!--Separador de footer-->
     <footer id="final" class="item pie">
