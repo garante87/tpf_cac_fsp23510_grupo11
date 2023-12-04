@@ -15,6 +15,7 @@ function validateInputs() {
     }
 }
 
+
 function validar() {
     const todo_correcto = true;
     if (!todo_correcto) {
@@ -23,22 +24,10 @@ function validar() {
     return todo_correcto;
 }
 
-
 document.addEventListener("click", (e) => {
     if (e.target === $submit) {
         e.preventDefault();
         validateInputs();
         validar();
-    }
-})
-
-    validaCheck('status');
-
-}
-
-document.addEventListener("click", (e) => {
-    if (e.target === $submit) {
-        e.preventDefault();
-        validateInputs();
     }
 })
