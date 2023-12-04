@@ -21,8 +21,8 @@ const validateEmailFormat = e => {
     const field = e.target;
     const regex = new RegExp(/^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
     );
-    console.log(regex.test(field.value))
 }
+
 
 nameField.addEventListener("blur", (e) => validateEmptyField("Escribe un nombre", e));
 apellido.addEventListener("blur", (e) => validateEmptyField("Escribe un apellido", e));
