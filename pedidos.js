@@ -15,15 +15,6 @@ function validateInputs() {
     }
 }
 
-
-function validar() {
-    const todo_correcto = true;
-    if (!todo_correcto) {
-        alert('Algunos campos no están correctos, vuelva a revisarlos');
-    }
-    return todo_correcto;
-}
-
 document.addEventListener("click", (e) => {
     if (e.target === $submit) {
         e.preventDefault();
