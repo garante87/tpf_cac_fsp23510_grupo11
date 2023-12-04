@@ -1,4 +1,3 @@
-
 # importo librerías
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -10,6 +9,8 @@ import time
 #####################################################################
 app = Flask(__name__)
 CORS(app)
+
+cors = CORS(app, resources={r"/libros": {"origins": "http://127.0.0.1:5500"}})
 
 #####################################################################
 class BaseDeDatos:
@@ -34,7 +35,7 @@ class BaseDeDatos:
         self.cursor.execute(
             '''
                 CREATE TABLE IF NOT EXISTS libros (
-                    id INT,
+                    id INT NOT NULL,
                     titulo VARCHAR(255) NOT NULL,
                     autor VARCHAR(255),
                     editorial VARCHAR(255),
@@ -42,7 +43,7 @@ class BaseDeDatos:
                     paginas INT,
                     imagen_url VARCHAR(255),
                     precio INT,
-                    descripcion VARCHAR(255) NOT NULL
+                    descripcion VARCHAR(255)
                 )
             ''')
         
@@ -108,6 +109,11 @@ class BaseDeDatos:
 #clrscr
 print("\033[H\033[J")
 
+@app.after_request
+def add_headers(response):
+    response.headers['Access-Control-Allow-Origin'] = '*'  # Permitir solicitudes desde cualquier origen
+    return response
+
 # prueba directorio raiz
 @app.route("/")
 def prueba_inicio():
@@ -138,9 +144,86 @@ db =  BaseDeDatos(
 # db.eliminar_libro(412)
 
 # prueba mostrar
-db.mostrar_libro(413)
-db.mostrar_libro(414)
-db.mostrar_libro(415)
+# db.mostrar_libro(413)
+# db.mostrar_libro(414)
+# db.mostrar_libro(415)
+
+PATH_IMAGENES = './imagenes/' 
+
+# agregar ###########################################################
+@app.route("/libros", methods=["POST"])
+def agregar_libro():
+
+    id = request.form['id']
+    titulo = request.form['titulo']
+    autor = request.form['autor']
+    editorial = request.form['editorial']
+    genero = request.form['genero']
+    paginas = request.form['paginas']
+    imagen_url = request.form['imagen_url']
+    precio = request.form['precio']
+    descripcion = request.form['descripcion']
+    
+    libro = db.consultar_libro(id)
+    if not libro:
+        print("Error en la carga del libro")
+    if db.agregar_libro(id, titulo, autor, editorial, genero, paginas, imagen_url, precio, descripcion):
+        return jsonify({"Aviso": "El libro fue agregado a la base de datos"}), 201
+    else:
+        return jsonify({"Aviso": "El libro ya existe!"}), 400
+
+# mostrar ###########################################################
+@app.route("/libros/<int:id>", methods=["GET"])
+def mostrar_libro(id):
+    libro = db.consultar_libro(id)
+    if libro:
+        return jsonify(libro), 201
+    else:
+        return "Libro no encontrado", 404
+
+# listar ############################################################
+@app.route("/libros", methods=["GET"])
+def listar_libros():
+    libros = db.listar_libros()
+    return jsonify(libros)
+
+# modificar #########################################################
+@app.route("/libros/<int:id>", methods=["PUT"])
+def modificar_libro(id):
+    nueva_descripcion = request.form.get("descripcion")
+    nueva_cantidad = request.form.get("cantidad")
+    nuevo_precio = request.form.get("precio")
+    nuevo_proveedor = request.form.get("proveedor")
+    imagen_url = request.files['imagen_url']
+    nombre_imagen = ""
+    nombre_imagen = secure_filename(imagen_url.filename)
+    nombre_base, extension = os.path.splitext(nombre_imagen)
+    nombre_imagen = f"{nombre_base}_{int(time.time())}{extension}"
+    imagen_url.save(os.path.join(PATH_IMAGENES, nombre_imagen))
+    libro = libro = db.consultar_libro(id)
+    if libro: # Si existe el libro...
+        imagen_vieja = libro["imagen_url"]
+        ruta_imagen = os.path.join(PATH_IMAGENES, imagen_vieja)
+        if os.path.exists(ruta_imagen):
+            os.remove(ruta_imagen)
+    if db.modificar_libro(id, nueva_descripcion, nueva_cantidad, nuevo_precio, nombre_imagen, nuevo_proveedor):
+        return jsonify({"Aviso": "Libro modificado"}), 200
+    else:
+        return jsonify({"Aviso": "Libro no encontrado"}), 403
+
+# eliminar ##########################################################
+@app.route("/libros/<int:id>", methods=["DELETE"])
+def eliminar_libro(id):
+    libro = libro = db.consultar_libro(id)
+    if libro:
+        imagen_vieja = libro["imagen_url"]
+        ruta_imagen = os.path.join(PATH_IMAGENES, imagen_vieja)
+        if os.path.exists(ruta_imagen):
+            os.remove(ruta_imagen)
+    if db.eliminar_libro(id):
+        return jsonify({"Aviso": "Libro eliminado"}), 200
+    else:
+        return jsonify({"Aviso": "Error al eliminar el libro"}), 500
 
 # inicio servicio flask
 if __name__ == "__main__":
