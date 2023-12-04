@@ -47,7 +47,7 @@
 
     <center>
         <h1 id="Titulo_Form">Formulario de Pedido</h1>
-        <form action="submit_order.html" target="_blank">
+        <form onsubmit="return validateInputs(), validar()" action="submit_order.html">
 
             <label for="name">Nombre:</label><br>
             <input type="text" id="name" class="name1" name="name" placeholder="Juan Caballo Gutierrez"><br>
@@ -64,19 +64,20 @@
             <h1 id="titulo_met">Método de pago</h1>
             <div class="payment-method">
                 <label>
-                    <input type="radio" name="metodo_pago" value="DebitoTarjeta">
+                    <input type="radio" name="metodo_pago" value="DebitoTarjeta" required>
                     Débito o Tarjeta
                 </label><br>
                 <label>
-                    <input type="radio" name="metodo_pago" value="Contrareembolso">
+                    <input type="radio" name="metodo_pago" value="Contrareembolso" required>
                     Contrareembolso
                 </label><br>
                 <label>
-                    <input type="radio" name="metodo_pago" value="TransferenciaBancaria">
+                    <input type="radio" name="metodo_pago" value="TransferenciaBancaria" required>
                     Transferencia Bancaria
                 </label><br>
             </div>
             <div><input type="submit" value="Enviar Pedido"></div>
+            <script src="pedidos.js"></script>
         </form>
     </center>
 
@@ -96,3 +97,4 @@
 </body>
 
 </html>
+

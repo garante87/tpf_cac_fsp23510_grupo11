@@ -14,7 +14,6 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
 </head>
-<form action=""></form>
 
 <body>
     <header class="encabezado item">
@@ -49,30 +48,51 @@
     <form action="gracias.html" target="_blank">
         <fieldset>
 
-            <label for="nombre">Nombre: </label>
+            <label>
+                <em>Nombre:</em> 
             <input size="30" type="text" name="nombre" placeholder="Ingrese su nombre aqui">
+        <span>
+            
+        </span>
+        </label>
             <br><br>
 
-            <label for="apellido">Apellido: </label>
+            <label>
+                <em>Apellido:</em> 
             <input size="30" type="text" name="apellido" placeholder="Ingrese su apellido aqui">
+        <span>
+
+        </span>
+        </label>
             <br><br>
 
-            <label for="email">e-mail: </label>
+            <label>
+                <em>e-mail:</em> 
             <input type="email" name="email" placeholder="Ingrese su e-mail aquí">
+        <span>
+
+        </span>
+        </label>
             <br><br>
 
-            <label for="consulta">Ingrese a continuación su consulta en menos de 300
-                caracteres:</label>
+            <label>
+                <em>Ingrese a continuación su consulta en menos de 300
+                caracteres:</em>
             <br>
             <textarea name="consulta" id="consulta" placeholder="Dejanos acá tu consulta en menos de 300 caracteres"
                 cols="100" rows="10" maxlength="300"></textarea>
+            <span>
+
+            </span>
+            </label>
 
         </fieldset>
 
         <br><br>
-        <input type="reset" value="Borrar formulario">
-        <input type="submit" value="Enviar datos">
+        <button type="reset">Borrar formulario</button>
+        <button type="submit">Enviar datos</button>
 
+        <script src="consultas.js"></script>
 
     </form>
 
@@ -97,3 +117,4 @@
 </body>
 
 </html>
+

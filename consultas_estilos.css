@@ -147,3 +147,13 @@ fieldset {
     color: whitesmoke;
     font-size: 24px;
 }
+
+.error{
+    color: red;
+    display: block;
+}
+
+.invalid{
+    border: solid 1px red;
+    box-shadow: 0 0 5px red;
+}
