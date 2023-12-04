@@ -119,11 +119,20 @@ def add_headers(response):
 def prueba_inicio():
     return "<p>Prueba</p>"
 
+############ conexion db local ######################################
+# db =  BaseDeDatos(
+#                 host="localhost",
+#                 user="root", 
+#                 password="", 
+#                 database="tienda_mangas"
+#             )
+
+############ conexion db online #####################################
 db =  BaseDeDatos(
-                host="localhost",
-                user="root", 
-                password="", 
-                database="tienda_mangas"
+                host="garante87.mysql.pythonanywhere-services.com",
+                user="garante87", 
+                password="CaC2023!", 
+                database="garante87$default"
             )
 
 # prueba agregar

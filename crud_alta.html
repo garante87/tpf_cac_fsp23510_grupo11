@@ -90,6 +90,12 @@
 
         <script>
 
+            // URL en servidor local
+            // URL_Backend = "http://127.0.0.1:5000";
+
+            // URL en servidor online
+            URL_Backend = "garante87.pythonanywhere.com";
+
             // Genera numeros aleatorios
             function generarValores() {
                 document.getElementById("id").value = Math.floor(Math.random() * 1000) + 1; //id
@@ -104,8 +110,7 @@
                 const nuevaURL = inputImagen.value;
                 imagenVisualizada.src = nuevaURL;
             });
-            
-            URL_Backend = "http://127.0.0.1:5000";
+
             document.getElementById('formularioLibro').addEventListener('submit', function(event) {
                 event.preventDefault();
                 var formData = new FormData(); // Crea un objeto FormData con los valores del formulario
